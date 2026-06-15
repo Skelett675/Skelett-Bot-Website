@@ -1,83 +1,30 @@
-<!DOCTYPE html>
-<html lang="de">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Settings</title>
+<button onclick="toggleSettings()" style="position:fixed;top:20px;right:20px;z-index:1000;">
+⚙ Settings
+</button>
 
-<style>
-:root {
-  --accent: #58f2a3;
-}
+<div class="settings" id="settings">
 
-body {
-  margin:0;
-  font-family: Arial;
-  background: radial-gradient(circle at top, #1a1c20, #0c0d10);
-  color:white;
-}
+  <h3>Settings</h3>
 
-.topbar {
-  display:flex;
-  justify-content:space-between;
-  padding:20px;
-}
+  <div class="setting-group">
+    <label>Sprache</label>
+    <select onchange="setLang(this.value)">
+      <option value="de">Deutsch</option>
+      <option value="en">English</option>
+    </select>
+  </div>
 
-button {
-  padding:10px 15px;
-  border:none;
-  border-radius:10px;
-  background:var(--accent);
-  font-weight:bold;
-  cursor:pointer;
-}
-
-.card {
-  margin:30px;
-  padding:20px;
-  border-radius:20px;
-  background: rgba(255,255,255,0.06);
-  backdrop-filter: blur(20px);
-  border:1px solid rgba(255,255,255,0.1);
-}
-</style>
-</head>
-
-<body>
-
-<div class="topbar">
-  <button onclick="back()">⬅ Back</button>
-</div>
-
-<div class="card">
-
-  <h2>⚙ Settings</h2>
-
-  <h3>🌍 Language</h3>
-  <button onclick="setLang('de')">Deutsch</button>
-  <button onclick="setLang('en')">English</button>
-
-  <h3>🎨 Accent</h3>
-  <button onclick="setColor('#58f2a3')">Green</button>
-  <button onclick="setColor('#ff4d4d')">Red</button>
-  <button onclick="setColor('#4da6ff')">Blue</button>
+  <div class="setting-group">
+    <label>Farbe</label>
+    <select onchange="setTheme(this.value)">
+      <option value="green">Grün</option>
+      <option value="blue">Blau</option>
+      <option value="red">Rot</option>
+      <option value="purple">Lila</option>
+      <option value="orange">Orange</option>
+      <option value="gray">Grau</option>
+      <option value="dark">Weiß/Dark Accent</option>
+    </select>
+  </div>
 
 </div>
-
-<script>
-function back() {
-  window.location.href = "dashboard.html";
-}
-
-function setLang(l) {
-  localStorage.setItem("lang", l);
-}
-
-function setColor(c) {
-  localStorage.setItem("accent", c);
-  document.documentElement.style.setProperty("--accent", c);
-}
-</script>
-
-</body>
-</html>
