@@ -14,10 +14,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
 }
 
-/* GLASS CARD */
 .card {
   width: 500px;
   padding: 35px;
@@ -32,32 +30,27 @@ body {
     0 10px 40px rgba(0,0,0,0.6),
     inset 0 0 20px rgba(255,255,255,0.05);
 
+  transform: perspective(1000px) rotateX(2deg);
+  transition: 0.25s;
   text-align: center;
-
-  transform: perspective(1000px) rotateX(3deg);
-  transition: 0.4s;
 }
 
 .card:hover {
-  transform: perspective(1000px) rotateX(0deg) scale(1.02);
-  box-shadow:
-    0 20px 60px rgba(0,0,0,0.7),
-    0 0 25px rgba(88, 242, 163, 0.3);
+  transform: perspective(1000px) rotateX(0deg) scale(1.01);
 }
 
 h1 {
   color: #58f2a3;
-  text-shadow: 0 0 10px rgba(88, 242, 163, 0.4);
 }
 
 button {
-  margin-top: 15px;
+  margin-top: 12px;
   padding: 12px 18px;
   border: none;
   border-radius: 12px;
+  cursor: pointer;
   background: #5865F2;
   color: white;
-  cursor: pointer;
 }
 </style>
 </head>
@@ -65,11 +58,13 @@ button {
 <body>
 
 <div class="card">
-  <h1>📜 Start</h1>
-  <p>Willkommen im Dashboard System</p>
+  <h1>🤖 Skelett Bot Dashboard</h1>
 
-  <button onclick="location.href='dashboard.html'">Dashboard</button>
-  <button onclick="location.href='privacy.html'">Richtlinien</button>
+  <p>Willkommen 👋</p>
+
+  <button onclick="location.href='dashboard.html'">Dashboard starten</button>
+  <button onclick="location.href='privacy.html'">Privacy</button>
+  <button onclick="location.href='terms.html'">Terms</button>
 </div>
 
 </body>
