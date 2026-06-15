@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="de">
+<html>
 <head>
 <meta charset="UTF-8">
-<title>Nutzungsbedingungen</title>
+<title>Terms</title>
 
 <style>
 body {
@@ -10,11 +10,10 @@ body {
   font-family: Arial;
   background: radial-gradient(circle at top, #1e1f22, #111214);
   color: white;
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow-x: hidden;
 }
 
 /* BACK BUTTON */
@@ -41,22 +40,10 @@ body {
   box-shadow: 0 0 15px rgba(88, 242, 163, 0.5);
 }
 
-/* FLOATING GREEN GLOW */
-.glow {
-  position: absolute;
-  width: 450px;
-  height: 450px;
-  background: rgba(88, 242, 163, 0.25);
-  filter: blur(120px);
-  border-radius: 50%;
-  top: -120px;
-  right: -120px;
-}
-
 /* GLASS CARD */
 .card {
   width: 750px;
-  padding: 40px;
+  padding: 35px;
   border-radius: 25px;
 
   background: rgba(255,255,255,0.06);
@@ -68,85 +55,48 @@ body {
     0 10px 40px rgba(0,0,0,0.6),
     inset 0 0 20px rgba(255,255,255,0.05);
 
-  transform: perspective(1000px) rotateX(3deg);
-  transition: 0.4s;
+  transform: perspective(1000px) rotateX(2deg);
+  transition: 0.25s;
 }
 
 .card:hover {
-  transform: perspective(1000px) rotateX(0deg) scale(1.02);
-  box-shadow:
-    0 20px 60px rgba(0,0,0,0.7),
-    0 0 25px rgba(88, 242, 163, 0.3);
+  transform: perspective(1000px) rotateX(0deg) scale(1.01);
 }
 
 /* TEXT */
-h1 {
+h1, h2 {
   color: #58f2a3;
-  text-shadow: 0 0 10px rgba(88, 242, 163, 0.4);
-}
-
-h2 {
-  color: #58f2a3;
-  margin-top: 20px;
-  text-shadow: 0 0 8px rgba(88, 242, 163, 0.3);
+  text-shadow: 0 0 10px rgba(88, 242, 163, 0.3);
 }
 
 p {
   opacity: 0.85;
   line-height: 1.6;
 }
-
-/* FOOTER CONTACT */
-.contact {
-  margin-top: 20px;
-  padding: 10px;
-  border-radius: 12px;
-  background: rgba(88, 242, 163, 0.1);
-  color: #58f2a3;
-}
 </style>
 </head>
 
 <body>
 
-<div class="glow"></div>
-
 <button class="back" onclick="location.href='index.html'">
-⬅ Zurück zum Start
+⬅ Start
 </button>
 
 <div class="card">
 
-  <h1>📜 Nutzungsbedingungen</h1>
+  <h1>📜 Terms</h1>
 
-  <h2>1. Nutzung des Bots</h2>
-  <p>
-    Der Skelett-Bot darf nur gemäß den Discord-Nutzungsbedingungen und Community-Richtlinien verwendet werden.
-  </p>
+  <h2>1. Nutzung</h2>
+  <p>Nur für Discord Bot erlaubt.</p>
 
-  <h2>2. Verbotene Nutzung</h2>
-  <p>
-    Missbrauch, Spam, Exploits oder illegale Aktivitäten sind streng untersagt.
-  </p>
+  <h2>2. Verboten</h2>
+  <p>Spam, Abuse oder Exploits sind verboten.</p>
 
-  <h2>3. Verfügbarkeit</h2>
-  <p>
-    Es besteht kein Anspruch auf dauerhafte Verfügbarkeit. Funktionen können jederzeit geändert werden.
-  </p>
+  <h2>3. Haftung</h2>
+  <p>Keine Haftung für Schäden oder Datenverlust.</p>
 
-  <h2>4. Haftung</h2>
-  <p>
-    Der Betreiber übernimmt keine Haftung für Schäden oder Datenverluste.
-  </p>
-
-  <h2>5. Änderungen</h2>
-  <p>
-    Diese Nutzungsbedingungen können jederzeit angepasst werden.
-  </p>
-
-  <div class="contact">
-    📩 Kontakt: Skelett675 / Skelett685 (Discord)
-  </div>
+  <h2>4. Änderungen</h2>
+  <p>Diese Bedingungen können jederzeit geändert werden.</p>
 
 </div>
 
