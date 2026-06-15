@@ -2,65 +2,53 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
-
 <title>Dashboard</title>
 
 <style>
-body{
-    margin:0;
-    font-family:Arial;
-    background:radial-gradient(circle at top,#1e1f22,#111214);
-    color:white;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    min-height:100vh;
+body {
+  margin: 0;
+  font-family: Arial;
+  background: radial-gradient(circle at top, #1e1f22, #111214);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
-.card{
-    width:700px;
-    padding:40px;
-    border-radius:25px;
-    background:rgba(255,255,255,.06);
-    backdrop-filter:blur(18px);
-    border:1px solid rgba(88,242,163,.25);
-
-    box-shadow:
-    0 10px 40px rgba(0,0,0,.6),
-    inset 0 0 20px rgba(255,255,255,.05);
-
-    text-align:center;
+.card {
+  width: 600px;
+  padding: 40px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(88,242,163,0.25);
+  text-align: center;
 }
 
-.status{
-    font-size:25px;
-    margin-top:20px;
+h1 {
+  color: #58f2a3;
 }
 
-.online{
-    color:#58f2a3;
+.status {
+  font-size: 22px;
+  margin: 10px;
 }
 
-.offline{
-    color:#ff5555;
-}
+.online { color: #58f2a3; }
+.offline { color: #ff5555; }
 
-.btn{
-    margin-top:20px;
-    padding:14px 20px;
-    border:none;
-    border-radius:15px;
-    background:rgba(255,255,255,.08);
-    color:white;
-    cursor:pointer;
-    transition:.3s;
+button {
+  margin-top: 15px;
+  padding: 12px 18px;
+  border-radius: 12px;
+  border: none;
+  background: rgba(255,255,255,0.1);
+  color: white;
+  cursor: pointer;
 }
-
-.btn:hover{
-    background:rgba(88,242,163,.2);
-    box-shadow:0 0 20px rgba(88,242,163,.4);
+button:hover {
+  background: rgba(88,242,163,0.2);
 }
 </style>
 </head>
@@ -71,57 +59,43 @@ body{
 
 <h1>📊 Dashboard</h1>
 
-<div class="status" id="status">
-Lade...
-</div>
+<div id="status">Lade...</div>
+<div id="automod">Lade...</div>
 
-<div class="status" id="automod">
-Lade...
-</div>
-
-<button class="btn"
-onclick="location.href='index.html'">
-⬅ Zurück zum Start
+<button onclick="location.href='index.html'">
+⬅ Start
 </button>
 
 </div>
 
 <script>
 
-async function load(){
+const API = "https://wearing-requesting-tomatoes-permalink.trycloudflare.com";
 
-try{
+async function load() {
+  try {
+    const res = await fetch(API + "/api/status");
+    const data = await res.json();
 
-const res =
-await fetch("/api/status");
+    document.getElementById("status").innerHTML =
+      data.online
+        ? "<span class='online'>🟢 ONLINE</span>"
+        : "<span class='offline'>🔴 OFFLINE</span>";
 
-const data =
-await res.json();
+    document.getElementById("automod").innerHTML =
+      data.autoMod
+        ? "<span class='online'>🟢 AutoMod AN</span>"
+        : "<span class='offline'>🔴 AutoMod AUS</span>";
 
-document.getElementById("status")
-.innerHTML =
-data.online
-? "<span class='online'>🟢 Bot Online</span>"
-: "<span class='offline'>🔴 Bot Offline</span>";
-
-document.getElementById("automod")
-.innerHTML =
-data.autoMod
-? "<span class='online'>🟢 AutoMod Aktiv</span>"
-: "<span class='offline'>🔴 AutoMod Aus</span>";
-
-}catch(e){
-
-document.getElementById("status")
-.innerHTML =
-"API Fehler";
-
-}
-
+  } catch (e) {
+    console.log(e);
+    document.getElementById("status").innerHTML =
+      "❌ API FEHLER";
+  }
 }
 
 load();
-setInterval(load,3000);
+setInterval(load, 3000);
 
 </script>
 
