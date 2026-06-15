@@ -8,7 +8,7 @@
 body {
   margin: 0;
   font-family: Arial;
-  background: linear-gradient(135deg, #1e1f22, #2b2d31);
+  background: radial-gradient(circle at top, #1e1f22, #111214);
   color: white;
   display: flex;
   justify-content: center;
@@ -16,31 +16,24 @@ body {
   height: 100vh;
 }
 
-/* Back Button */
-.back {
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 12px;
-  background: rgba(255,255,255,0.08);
-  color: white;
-  cursor: pointer;
-}
-
-/* Card */
+/* GLASS CARD */
 .card {
   width: 500px;
   padding: 30px;
-  border-radius: 20px;
-  background: rgba(255,255,255,0.05);
-  backdrop-filter: blur(12px);
+  border-radius: 25px;
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(18px);
+  border: 1px solid rgba(88, 242, 163, 0.2);
   text-align: center;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+}
+
+h1 {
+  color: #58f2a3;
 }
 
 button {
-  margin-top: 20px;
+  margin-top: 15px;
   padding: 12px 20px;
   border: none;
   border-radius: 12px;
@@ -56,19 +49,10 @@ button {
 <div class="card">
   <h1>📜 Willkommen</h1>
 
-  <p>
-    Bevor du das Dashboard nutzt, musst du den Richtlinien zustimmen.
-  </p>
+  <p>Bitte akzeptiere die Richtlinien.</p>
 
-  <p style="font-size:12px;opacity:0.7;">
-    - Nur für Owner<br>
-    - Keine Manipulation ohne Erlaubnis<br>
-    - Nutzung auf eigene Verantwortung
-  </p>
-
-  <button onclick="location.href='dashboard.html'">
-    Zustimmen & Weiter
-  </button>
+  <button onclick="location.href='dashboard.html'">Dashboard</button>
+  <button onclick="location.href='privacy.html'">Privacy</button>
 </div>
 
 </body>
