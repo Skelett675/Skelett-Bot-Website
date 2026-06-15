@@ -1,52 +1,37 @@
-function goDashboard() {
-  window.location.href = "dashboard.html";
-}
-
-function goTerms() {
-  window.location.href = "terms.html";
-}
-
-function goPrivacy() {
-  window.location.href = "privacy.html";
-}
-
-/* SETTINGS MENU */
+<script>
 function toggleSettings() {
-  document.getElementById("settingsMenu").classList.toggle("hidden");
+  const s = document.getElementById("settings");
+  s.style.display = (s.style.display === "block") ? "none" : "block";
 }
 
-/* LANGUAGE SYSTEM */
-function setLanguage(lang) {
-  if (lang === "de") {
-    document.getElementById("title").innerText = "🤖 Skelett Bot";
-    document.getElementById("subtitle").innerText = "Control Panel";
-    document.getElementById("btnDash").innerText = "Dashboard";
-    document.getElementById("btnTerms").innerText = "AGB";
-    document.getElementById("btnPrivacy").innerText = "Datenschutz";
-  }
-
-  if (lang === "en") {
-    document.getElementById("title").innerText = "🤖 Skelett Bot";
-    document.getElementById("subtitle").innerText = "Control Panel";
-    document.getElementById("btnDash").innerText = "Dashboard";
-    document.getElementById("btnTerms").innerText = "Terms";
-    document.getElementById("btnPrivacy").innerText = "Privacy";
-  }
-
-  localStorage.setItem("lang", lang);
-}
-
-/* THEME SYSTEM */
+/* THEME */
 function setTheme(theme) {
-  document.body.setAttribute("data-theme", theme);
+  document.documentElement.setAttribute("data-theme", theme);
   localStorage.setItem("theme", theme);
 }
 
-/* LOAD SAVED SETTINGS */
-window.onload = () => {
-  const lang = localStorage.getItem("lang");
-  const theme = localStorage.getItem("theme");
+/* LANGUAGE (einfaches System erstmal) */
+function setLang(lang) {
+  localStorage.setItem("lang", lang);
 
-  if (lang) setLanguage(lang);
-  if (theme) setTheme(theme);
+  if (lang === "de") {
+    document.querySelector("h1").innerText = "🤖 Skelett Bot";
+  } else {
+    document.querySelector("h1").innerText = "🤖 Skelett Bot";
+  }
+}
+
+/* LOAD SAVED */
+window.onload = () => {
+  const theme = localStorage.getItem("theme");
+  const lang = localStorage.getItem("lang");
+
+  if (theme) {
+    document.documentElement.setAttribute("data-theme", theme);
+  }
+
+  if (lang) {
+    setLang(lang);
+  }
 };
+</script>
