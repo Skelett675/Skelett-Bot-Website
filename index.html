@@ -2,106 +2,123 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Skelett Bot</title>
+<title>Skelett Bot Dashboard</title>
 
 <style>
-body{
-    margin:0;
-    font-family:Arial;
-    background:radial-gradient(circle at top,#1e1f22,#111214);
-    color:white;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    min-height:100vh;
-    overflow:hidden;
+body {
+  margin:0;
+  font-family: Arial;
+  background: radial-gradient(circle at top, #1a1c20, #0c0d10);
+  color:white;
+  overflow:hidden;
 }
 
-.glow{
-    position:absolute;
-    width:500px;
-    height:500px;
-    background:rgba(88,242,163,.2);
-    filter:blur(120px);
-    border-radius:50%;
-    top:-150px;
-    left:-150px;
+/* GLOW */
+.glow {
+  position:absolute;
+  width:500px;
+  height:500px;
+  background: rgba(88,242,163,0.25);
+  filter: blur(130px);
+  border-radius:50%;
+  top:-150px;
+  left:-150px;
 }
 
-.card{
-    width:600px;
-    padding:40px;
-    border-radius:25px;
-    background:rgba(255,255,255,.06);
-    backdrop-filter:blur(18px);
-    border:1px solid rgba(88,242,163,.25);
-
-    box-shadow:
-    0 10px 40px rgba(0,0,0,.6),
-    inset 0 0 20px rgba(255,255,255,.05);
-
-    text-align:center;
+/* CENTER CARD */
+.container {
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  text-align:center;
 }
 
-h1{
-    color:#58f2a3;
-    text-shadow:0 0 15px rgba(88,242,163,.4);
+/* GLASS BOX */
+.card {
+  padding:40px;
+  border-radius:25px;
+
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(20px);
+
+  border: 1px solid rgba(88,242,163,0.25);
+
+  box-shadow: 0 10px 40px rgba(0,0,0,0.7),
+              inset 0 0 20px rgba(255,255,255,0.05);
+
+  transform: perspective(900px) rotateX(3deg);
+  transition:0.4s;
 }
 
-p{
-    opacity:.85;
+.card:hover {
+  transform: perspective(900px) rotateX(0deg) scale(1.03);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.8),
+              0 0 25px rgba(88,242,163,0.3);
 }
 
-.btn{
-    display:block;
-    width:250px;
-    margin:15px auto;
-    padding:14px;
-    border:none;
-    border-radius:15px;
-    background:rgba(255,255,255,.08);
-    color:white;
-    cursor:pointer;
-    transition:.3s;
-    font-size:16px;
+/* BUTTONS */
+button {
+  margin:10px;
+  padding:12px 20px;
+  border:none;
+  border-radius:12px;
+  background:#58f2a3;
+  font-weight:bold;
+  cursor:pointer;
+  transition:0.3s;
 }
 
-.btn:hover{
-    background:rgba(88,242,163,.2);
-    box-shadow:0 0 20px rgba(88,242,163,.4);
+button:hover {
+  box-shadow:0 0 15px rgba(88,242,163,0.6);
+  transform:scale(1.05);
+}
+
+.small {
+  margin-top:15px;
+  font-size:12px;
+  opacity:0.7;
 }
 </style>
+
 </head>
 
 <body>
 
 <div class="glow"></div>
 
-<div class="card">
+<div class="container">
 
-<h1>🤖 Skelett Bot</h1>
+  <div class="card">
 
-<p>
-Willkommen beim offiziellen Dashboard.
-</p>
+    <h1>🤖 Skelett Bot</h1>
+    <p>Control Panel</p>
 
-<button class="btn"
-onclick="location.href='dashboard.html'">
-📊 Dashboard
-</button>
+    <!-- 🔥 DIE BUTTONS DIE DU MEINST -->
+    <button onclick="goDashboard()">Dashboard</button>
+    <button onclick="goTerms()">Terms</button>
+    <button onclick="goPrivacy()">Privacy</button>
 
-<button class="btn"
-onclick="location.href='terms.html'">
-📜 Nutzungsbedingungen
-</button>
+    <div class="small">Glass UI • Neon Green • v1</div>
 
-<button class="btn"
-onclick="location.href='privacy.html'">
-🔒 Datenschutz
-</button>
+  </div>
 
 </div>
+
+<script>
+function goDashboard() {
+  window.location.href = "dashboard.html";
+}
+
+function goTerms() {
+  window.location.href = "terms.html";
+}
+
+function goPrivacy() {
+  window.location.href = "privacy.html";
+}
+</script>
 
 </body>
 </html>
