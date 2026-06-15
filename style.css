@@ -1,54 +1,83 @@
-:root{
-  --accent:#58f2a3;
-}
-
-/* BODY */
-body{
+body {
   margin:0;
-  font-family:Arial;
-  background:radial-gradient(circle at top,#1a1c20,#0c0d10);
+  font-family: Arial;
+  background: radial-gradient(circle at top, #1a1c20, #0c0d10);
   color:white;
+  overflow:hidden;
 }
 
-/* GLASS CARD */
-.card{
-  background:rgba(255,255,255,0.06);
-  backdrop-filter:blur(20px);
-  border:1px solid rgba(255,255,255,0.1);
-  border-radius:20px;
+/* THEMES */
+body[data-theme="gray"] {
+  background: radial-gradient(circle at top, #2a2a2a, #111);
 }
 
-/* BUTTON */
-button{
-  background:var(--accent);
+body[data-theme="pastel"] {
+  background: radial-gradient(circle at top, #cfd9df, #e2ebf0);
+  color:#111;
+}
+
+.glow {
+  position:absolute;
+  width:500px;
+  height:500px;
+  background: rgba(88,242,163,0.25);
+  filter: blur(130px);
+  border-radius:50%;
+  top:-150px;
+  left:-150px;
+}
+
+.container {
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.card {
+  padding:40px;
+  border-radius:25px;
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(88,242,163,0.25);
+}
+
+button {
+  margin:10px;
+  padding:12px 20px;
   border:none;
-  padding:10px 14px;
-  border-radius:10px;
-  font-weight:bold;
+  border-radius:12px;
+  background:#58f2a3;
   cursor:pointer;
 }
 
-/* SETTINGS DROPDOWN */
-.settings-wrap{
-  position:fixed;
+/* SETTINGS */
+.settings {
+  position:absolute;
   top:15px;
   right:15px;
 }
 
-.settings-btn{
-  padding:10px 12px;
-  border-radius:10px;
-}
-
-.dropdown{
-  display:none;
-  position:absolute;
-  right:0;
-  margin-top:10px;
-  width:180px;
+.settings button {
+  font-size:20px;
   padding:10px;
 }
 
-.settings-wrap:hover .dropdown{
-  display:block;
+.settings-menu {
+  position:absolute;
+  right:0;
+  top:40px;
+  background: rgba(0,0,0,0.8);
+  padding:15px;
+  border-radius:10px;
+}
+
+.hidden {
+  display:none;
+}
+
+.small {
+  margin-top:15px;
+  font-size:12px;
+  opacity:0.7;
 }
