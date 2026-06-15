@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Login</title>
+</head>
+
+<body style="background:#111;color:white;font-family:Arial;text-align:center;margin-top:100px">
+
+<h1>🔐 Login</h1>
+
+<button onclick="login()">Login starten</button>
+
+<script>
+const API = "http://192.168.178.X:3000"; // deine Pi IP
+
+async function login() {
+  await fetch(API + "/api/login", { method: "POST" });
+  alert("Logged in!");
+  window.location.href = "dashboard.html";
+}
+</script>
+
+</body>
+</html>
