@@ -1,0 +1,54 @@
+:root{
+  --accent:#58f2a3;
+}
+
+/* BODY */
+body{
+  margin:0;
+  font-family:Arial;
+  background:radial-gradient(circle at top,#1a1c20,#0c0d10);
+  color:white;
+}
+
+/* GLASS CARD */
+.card{
+  background:rgba(255,255,255,0.06);
+  backdrop-filter:blur(20px);
+  border:1px solid rgba(255,255,255,0.1);
+  border-radius:20px;
+}
+
+/* BUTTON */
+button{
+  background:var(--accent);
+  border:none;
+  padding:10px 14px;
+  border-radius:10px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+/* SETTINGS DROPDOWN */
+.settings-wrap{
+  position:fixed;
+  top:15px;
+  right:15px;
+}
+
+.settings-btn{
+  padding:10px 12px;
+  border-radius:10px;
+}
+
+.dropdown{
+  display:none;
+  position:absolute;
+  right:0;
+  margin-top:10px;
+  width:180px;
+  padding:10px;
+}
+
+.settings-wrap:hover .dropdown{
+  display:block;
+}
