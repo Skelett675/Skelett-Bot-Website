@@ -1,70 +1,106 @@
 <!DOCTYPE html>
-<html>
+<html lang="de">
 <head>
 <meta charset="UTF-8">
-<title>Start</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Skelett Bot</title>
 
 <style>
-body {
-  margin: 0;
-  font-family: Arial;
-  background: radial-gradient(circle at top, #1e1f22, #111214);
-  color: white;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+body{
+    margin:0;
+    font-family:Arial;
+    background:radial-gradient(circle at top,#1e1f22,#111214);
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+    overflow:hidden;
 }
 
-.card {
-  width: 500px;
-  padding: 35px;
-  border-radius: 25px;
-
-  background: rgba(255,255,255,0.06);
-  backdrop-filter: blur(18px);
-
-  border: 1px solid rgba(88, 242, 163, 0.25);
-
-  box-shadow:
-    0 10px 40px rgba(0,0,0,0.6),
-    inset 0 0 20px rgba(255,255,255,0.05);
-
-  transform: perspective(1000px) rotateX(2deg);
-  transition: 0.25s;
-  text-align: center;
+.glow{
+    position:absolute;
+    width:500px;
+    height:500px;
+    background:rgba(88,242,163,.2);
+    filter:blur(120px);
+    border-radius:50%;
+    top:-150px;
+    left:-150px;
 }
 
-.card:hover {
-  transform: perspective(1000px) rotateX(0deg) scale(1.01);
+.card{
+    width:600px;
+    padding:40px;
+    border-radius:25px;
+    background:rgba(255,255,255,.06);
+    backdrop-filter:blur(18px);
+    border:1px solid rgba(88,242,163,.25);
+
+    box-shadow:
+    0 10px 40px rgba(0,0,0,.6),
+    inset 0 0 20px rgba(255,255,255,.05);
+
+    text-align:center;
 }
 
-h1 {
-  color: #58f2a3;
+h1{
+    color:#58f2a3;
+    text-shadow:0 0 15px rgba(88,242,163,.4);
 }
 
-button {
-  margin-top: 12px;
-  padding: 12px 18px;
-  border: none;
-  border-radius: 12px;
-  cursor: pointer;
-  background: #5865F2;
-  color: white;
+p{
+    opacity:.85;
+}
+
+.btn{
+    display:block;
+    width:250px;
+    margin:15px auto;
+    padding:14px;
+    border:none;
+    border-radius:15px;
+    background:rgba(255,255,255,.08);
+    color:white;
+    cursor:pointer;
+    transition:.3s;
+    font-size:16px;
+}
+
+.btn:hover{
+    background:rgba(88,242,163,.2);
+    box-shadow:0 0 20px rgba(88,242,163,.4);
 }
 </style>
 </head>
 
 <body>
 
+<div class="glow"></div>
+
 <div class="card">
-  <h1>🤖 Skelett Bot Dashboard</h1>
 
-  <p>Willkommen 👋</p>
+<h1>🤖 Skelett Bot</h1>
 
-  <button onclick="location.href='dashboard.html'">Dashboard starten</button>
-  <button onclick="location.href='privacy.html'">Privacy</button>
-  <button onclick="location.href='terms.html'">Terms</button>
+<p>
+Willkommen beim offiziellen Dashboard.
+</p>
+
+<button class="btn"
+onclick="location.href='dashboard.html'">
+📊 Dashboard
+</button>
+
+<button class="btn"
+onclick="location.href='terms.html'">
+📜 Nutzungsbedingungen
+</button>
+
+<button class="btn"
+onclick="location.href='privacy.html'">
+🔒 Datenschutz
+</button>
+
 </div>
 
 </body>
