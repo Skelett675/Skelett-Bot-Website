@@ -25,17 +25,16 @@ body {
   left:-150px;
 }
 
-/* CENTER CARD */
+/* CENTER */
 .container {
   height:100vh;
   display:flex;
   justify-content:center;
   align-items:center;
-  flex-direction:column;
   text-align:center;
 }
 
-/* GLASS BOX */
+/* CARD */
 .card {
   padding:40px;
   border-radius:25px;
@@ -48,12 +47,11 @@ body {
   box-shadow: 0 10px 40px rgba(0,0,0,0.7),
               inset 0 0 20px rgba(255,255,255,0.05);
 
-  transform: perspective(900px) rotateX(3deg);
   transition:0.4s;
 }
 
 .card:hover {
-  transform: perspective(900px) rotateX(0deg) scale(1.03);
+  transform: scale(1.03);
   box-shadow: 0 20px 60px rgba(0,0,0,0.8),
               0 0 25px rgba(88,242,163,0.3);
 }
@@ -95,12 +93,11 @@ button:hover {
     <h1>🤖 Skelett Bot</h1>
     <p>Control Panel</p>
 
-    <!-- 🔥 DIE BUTTONS DIE DU MEINST -->
     <button onclick="goDashboard()">Dashboard</button>
     <button onclick="goTerms()">Terms</button>
     <button onclick="goPrivacy()">Privacy</button>
 
-    <div class="small">Glass UI • Neon Green • v1</div>
+    <div class="small">Glass UI • Neon Green</div>
 
   </div>
 
