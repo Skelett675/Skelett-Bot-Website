@@ -2,73 +2,74 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Bot Dashboard</title>
+<title>Start</title>
 
 <style>
 body {
-  background:#1e1f22;
-  color:white;
-  font-family:Arial;
-  text-align:center;
+  margin: 0;
+  font-family: Arial;
+  background: linear-gradient(135deg, #1e1f22, #2b2d31);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
+/* Back Button */
+.back {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.08);
+  color: white;
+  cursor: pointer;
+}
+
+/* Card */
 .card {
-  background:#2b2d31;
-  margin:20px auto;
-  padding:20px;
-  width:300px;
-  border-radius:12px;
+  width: 500px;
+  padding: 30px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(12px);
+  text-align: center;
 }
 
-.green {
-  color:#3ba55c;
-}
-
-.red {
-  color:#ed4245;
+button {
+  margin-top: 20px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  background: #5865F2;
+  color: white;
 }
 </style>
 </head>
 
 <body>
 
-<h1>🤖 Bot Dashboard</h1>
-
 <div class="card">
-  <h2>Bot Status</h2>
-  <p id="status">Lade...</p>
+  <h1>📜 Willkommen</h1>
+
+  <p>
+    Bevor du das Dashboard nutzt, musst du den Richtlinien zustimmen.
+  </p>
+
+  <p style="font-size:12px;opacity:0.7;">
+    - Nur für Owner<br>
+    - Keine Manipulation ohne Erlaubnis<br>
+    - Nutzung auf eigene Verantwortung
+  </p>
+
+  <button onclick="location.href='dashboard.html'">
+    Zustimmen & Weiter
+  </button>
 </div>
-
-<div class="card">
-  <h2>AutoMod</h2>
-  <p id="automod">Lade...</p>
-</div>
-
-<script>
-
-async function loadData(){
-  try {
-    const res = await fetch("http://localhost:3000/api/status");
-    const data = await res.json();
-
-    // BOT STATUS
-    document.getElementById("status").innerHTML =
-      data.online ? "<span class='green'>🟢 ONLINE</span>" : "<span class='red'>🔴 OFFLINE</span>";
-
-    // AUTOMOD STATUS
-    document.getElementById("automod").innerHTML =
-      data.autoMod ? "<span class='green'>🟢 AN</span>" : "<span class='red'>🔴 AUS</span>";
-
-  } catch (e) {
-    document.getElementById("status").innerHTML = "❌ API nicht erreichbar";
-    document.getElementById("automod").innerHTML = "❌ API nicht erreichbar";
-  }
-}
-
-loadData();
-setInterval(loadData, 3000); // live update
-
-</script>
 
 </body>
 </html>
