@@ -1,50 +1,172 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <title>Skelett-Bot</title>
-    <style>
-        body {
-            background-color: #1e1f22;
-            color: #ffffff;
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding-top: 100px;
-        }
+<meta charset="UTF-8">
+<title>Bot Dashboard</title>
 
-        .container {
-            background-color: #2b2d31;
-            width: 500px;
-            margin: auto;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 0 20px rgba(0,0,0,0.4);
-        }
+<style>
+body {
+  margin: 0;
+  font-family: Arial;
+  background: #1e1f22;
+  color: white;
+}
 
-        h1 {
-            color: #5865F2; /* Discord-Blau */
-        }
+/* Header */
+.header {
+  background: #2b2d31;
+  padding: 20px;
+  text-align: center;
+  font-size: 24px;
+  color: #5865F2;
+  font-weight: bold;
+}
 
-        a {
-            color: #5865F2;
-            text-decoration: none;
-            display: block;
-            margin: 15px 0;
-            font-size: 18px;
-        }
+/* Container */
+.container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 10px;
+}
 
-        a:hover {
-            text-decoration: underline;
-        }
-    </style>
+/* Card */
+.card {
+  background: #2b2d31;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 12px;
+}
+
+/* Status */
+.status {
+  font-size: 20px;
+}
+
+/* Button */
+button {
+  background: #5865F2;
+  border: none;
+  padding: 10px 20px;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #4752c4;
+}
+
+/* Switch Style */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 26px;
+}
+
+.switch input {
+  display: none;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: #555;
+  transition: .3s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: .3s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #5865F2;
+}
+
+input:checked + .slider:before {
+  transform: translateX(24px);
+}
+</style>
 </head>
-<body>
-    <div class="container">
-        <h1>🤖 Mein Discord Bot</h1>
-        <p>Offizielle Website meines Discord-Bots.</p>
 
-        <a href="privacy.html">🔒 Datenschutzerklärung</a>
-        <a href="terms.html">📜 Nutzungsbedingungen</a>
-    </div>
+<body>
+
+<div class="header">
+🤖 Bot Dashboard
+</div>
+
+<div class="container">
+
+  <!-- BOT STATUS -->
+  <div class="card">
+    <h2>Bot Status</h2>
+    <p id="status" class="status">🔴 Lade...</p>
+  </div>
+
+  <!-- AUTO MOD -->
+  <div class="card">
+    <h2>Auto Moderation</h2>
+    <label class="switch">
+      <input type="checkbox" id="automod">
+      <span class="slider"></span>
+    </label>
+  </div>
+
+  <!-- WELCOME -->
+  <div class="card">
+    <h2>Welcome Messages</h2>
+    <label class="switch">
+      <input type="checkbox" id="welcome">
+      <span class="slider"></span>
+    </label>
+  </div>
+
+</div>
+
+<script>
+
+// 🔧 Bot Status laden (später mit deinem Bot verbinden)
+async function loadStatus(){
+  try {
+    const res = await fetch("http://localhost:3000/api/status");
+    const data = await res.json();
+
+    document.getElementById("status").innerText =
+      data.online ? "🟢 ONLINE" : "🔴 OFFLINE";
+
+  } catch (e) {
+    document.getElementById("status").innerText =
+      "⚠️ API nicht verbunden";
+  }
+}
+
+// 🔘 AutoMod Switch
+document.getElementById("automod").addEventListener("change", async function(){
+  await fetch("http://localhost:3000/api/automod", {
+    method: "POST",
+    headers: {"Content-Type":"application/json"},
+    body: JSON.stringify({ value: this.checked })
+  });
+});
+
+// 🔘 Welcome Switch (nur UI erstmal)
+document.getElementById("welcome").addEventListener("change", function(){
+  console.log("Welcome:", this.checked);
+});
+
+loadStatus();
+
+</script>
+
 </body>
 </html>
