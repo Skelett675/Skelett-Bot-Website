@@ -1,160 +1,65 @@
 <!DOCTYPE html>
-<html lang="de">
+<html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Skelett Dashboard</title>
+<title>Dashboard</title>
 
 <style>
 body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: radial-gradient(circle at top, #1e1f22, #111214);
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  overflow: hidden;
+  margin:0;
+  font-family: Arial;
+  background: #0f1115;
+  color:white;
 }
 
-/* GLOW BACKGROUND */
-.glow {
-  position: absolute;
-  width: 500px;
-  height: 500px;
-  background: rgba(88, 242, 163, 0.18);
-  filter: blur(120px);
-  border-radius: 50%;
-  top: -150px;
-  left: -150px;
-}
-
-/* GLASS CARD */
 .card {
-  width: 650px;
-  padding: 40px;
-  border-radius: 25px;
-
-  background: rgba(255,255,255,0.06);
-  backdrop-filter: blur(18px);
-
-  border: 1px solid rgba(88,242,163,0.25);
-
-  box-shadow:
-    0 20px 60px rgba(0,0,0,0.6),
-    inset 0 0 20px rgba(255,255,255,0.05);
-
-  transform: perspective(1000px) rotateX(2deg);
-  transition: 0.4s;
-
-  text-align: center;
+  margin:20px;
+  padding:20px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(88,242,163,0.3);
+  border-radius: 15px;
 }
 
-.card:hover {
-  transform: perspective(1000px) rotateX(0deg) scale(1.02);
-}
-
-/* TITEL */
-h1 {
-  color: #58f2a3;
-  text-shadow: 0 0 10px rgba(88,242,163,0.4);
-}
-
-/* STATUS TEXT */
-.status {
-  font-size: 22px;
-  margin: 15px 0;
-}
-
-.online {
-  color: #58f2a3;
-}
-
-.offline {
-  color: #ff4d4d;
-}
-
-/* BUTTONS */
 button {
-  margin-top: 15px;
-  padding: 12px 18px;
-  border-radius: 14px;
-  border: none;
-  cursor: pointer;
-
-  background: rgba(255,255,255,0.08);
-  color: white;
-
-  transition: 0.3s;
-  backdrop-filter: blur(10px);
-}
-
-button:hover {
-  transform: scale(1.05);
-  background: rgba(88,242,163,0.25);
-  box-shadow: 0 0 20px rgba(88,242,163,0.3);
-}
-
-/* SMALL TAG */
-.tag {
-  margin-top: 20px;
-  display: inline-block;
-  padding: 6px 12px;
-  border-radius: 10px;
-  background: rgba(88,242,163,0.15);
-  color: #58f2a3;
-  font-size: 12px;
+  padding:10px;
+  margin:5px;
+  border:none;
+  background:#58f2a3;
+  cursor:pointer;
 }
 </style>
 </head>
 
 <body>
 
-<div class="glow"></div>
+<h1>📊 Dashboard</h1>
 
-<div class="card">
+<button onclick="loadServers()">Server laden</button>
 
-<h1>📊 Skelett Bot Dashboard</h1>
-
-<div id="status">Lade Status...</div>
-<div id="automod">Lade AutoMod...</div>
-
-<button onclick="location.href='index.html'">⬅ Zurück zum Start</button>
-
-<div class="tag">✔ Live API System</div>
-
-</div>
+<div id="servers"></div>
 
 <script>
 
-// 🔥 HIER DEIN CLOUDFLARE LINK EINTRAGEN:
-const API = "https://DEIN-LINK.trycloudflare.com";
+const API = "http://192.168.178.X:3000";
 
-async function load() {
-  try {
-    const res = await fetch(API + "/api/status");
-    const data = await res.json();
+async function loadServers() {
+  const res = await fetch(API + "/api/servers");
+  const data = await res.json();
 
-    document.getElementById("status").innerHTML =
-      data.online
-        ? "<span class='online'>🟢 ONLINE</span>"
-        : "<span class='offline'>🔴 OFFLINE</span>";
-
-    document.getElementById("automod").innerHTML =
-      data.autoMod
-        ? "<span class='online'>🟢 AutoMod AN</span>"
-        : "<span class='offline'>🔴 AutoMod AUS</span>";
-
-  } catch (err) {
-    console.log(err);
-    document.getElementById("status").innerHTML =
-      "❌ API FEHLER";
-  }
+  document.getElementById("servers").innerHTML =
+    data.map(s => `
+      <div class="card">
+        <b>${s.name}</b><br>
+        <button onclick="invite('${s.id}')">Invite erstellen</button>
+      </div>
+    `).join("");
 }
 
-load();
-setInterval(load, 3000);
+async function invite(id) {
+  const res = await fetch(API + "/api/invite/" + id);
+  const data = await res.json();
+  alert(data.url);
+}
 
 </script>
 
