@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="de">
 <head>
 <meta charset="UTF-8">
 <title>Dashboard</title>
@@ -7,50 +7,132 @@
 <style>
 body {
   margin:0;
-  font-family: Arial;
-  background: #0f1115;
+  font-family:Arial;
+  background: radial-gradient(circle at top, #1a1c20, #0c0d10);
   color:white;
+  overflow-x:hidden;
 }
 
-.card {
-  margin:20px;
+/* GLOW BACKGROUND */
+.glow {
+  position:absolute;
+  width:500px;
+  height:500px;
+  background: rgba(88,242,163,0.25);
+  filter: blur(130px);
+  border-radius:50%;
+  top:-150px;
+  left:-150px;
+}
+
+/* HEADER */
+.header {
   padding:20px;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(88,242,163,0.3);
-  border-radius: 15px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.title {
+  font-size:22px;
+  color:#58f2a3;
+  text-shadow:0 0 10px rgba(88,242,163,0.4);
+}
+
+.back {
+  padding:10px 15px;
+  border-radius:12px;
+  border:none;
+  background: rgba(255,255,255,0.08);
+  color:white;
+  backdrop-filter: blur(10px);
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.back:hover {
+  background: rgba(88,242,163,0.2);
+  box-shadow:0 0 15px rgba(88,242,163,0.4);
+  transform: scale(1.05);
+}
+
+/* SERVER GRID */
+.grid {
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap:20px;
+  padding:20px;
+}
+
+/* GLASS CARD */
+.card {
+  padding:20px;
+  border-radius:20px;
+
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(20px);
+
+  border: 1px solid rgba(88,242,163,0.25);
+
+  box-shadow: 0 10px 40px rgba(0,0,0,0.7);
+
+  transition:0.4s;
+  transform: perspective(800px) rotateX(2deg);
+}
+
+.card:hover {
+  transform: perspective(800px) rotateX(0deg) scale(1.03);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.8),
+              0 0 25px rgba(88,242,163,0.3);
+}
+
+img {
+  width:40px;
+  border-radius:50%;
 }
 
 button {
+  margin-top:10px;
   padding:10px;
-  margin:5px;
+  width:100%;
   border:none;
+  border-radius:12px;
   background:#58f2a3;
   cursor:pointer;
+  font-weight:bold;
+}
+
+button:hover {
+  box-shadow:0 0 15px rgba(88,242,163,0.6);
 }
 </style>
 </head>
 
 <body>
 
-<h1>📊 Dashboard</h1>
+<div class="glow"></div>
 
-<button onclick="loadServers()">Server laden</button>
+<div class="header">
+  <div class="title">📊 Dashboard</div>
+  <button class="back" onclick="location.href='login.html'">⬅ Zurück</button>
+</div>
 
-<div id="servers"></div>
+<div class="grid" id="servers"></div>
 
 <script>
 
 const API = "http://192.168.178.X:3000";
 
-async function loadServers() {
+async function load() {
   const res = await fetch(API + "/api/servers");
   const data = await res.json();
 
   document.getElementById("servers").innerHTML =
     data.map(s => `
       <div class="card">
-        <b>${s.name}</b><br>
-        <button onclick="invite('${s.id}')">Invite erstellen</button>
+        <img src="${s.icon || ''}">
+        <h3>${s.name}</h3>
+        <button onclick="invite('${s.id}')">Invite</button>
       </div>
     `).join("");
 }
@@ -58,9 +140,10 @@ async function loadServers() {
 async function invite(id) {
   const res = await fetch(API + "/api/invite/" + id);
   const data = await res.json();
-  alert(data.url);
+  alert("Invite: " + data.url);
 }
 
+load();
 </script>
 
 </body>
