@@ -1,28 +1,154 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <title>Nutzungsbedingungen</title>
-</head>
-<body style="background:#1e1f22;color:white;font-family:Arial;padding:40px;">
-  <h1>Nutzungsbedingungen</h1>
+<meta charset="UTF-8">
+<title>Nutzungsbedingungen</title>
 
+<style>
+body {
+  margin: 0;
+  font-family: Arial;
+  background: radial-gradient(circle at top, #1e1f22, #111214);
+  color: white;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+}
+
+/* BACK BUTTON */
+.back {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+
+  padding: 10px 15px;
+  border-radius: 14px;
+  border: none;
+
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(10px);
+
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.back:hover {
+  transform: scale(1.05);
+  background: rgba(88, 242, 163, 0.2);
+  box-shadow: 0 0 15px rgba(88, 242, 163, 0.5);
+}
+
+/* FLOATING GREEN GLOW */
+.glow {
+  position: absolute;
+  width: 450px;
+  height: 450px;
+  background: rgba(88, 242, 163, 0.25);
+  filter: blur(120px);
+  border-radius: 50%;
+  top: -120px;
+  right: -120px;
+}
+
+/* GLASS CARD */
+.card {
+  width: 750px;
+  padding: 40px;
+  border-radius: 25px;
+
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(18px);
+
+  border: 1px solid rgba(88, 242, 163, 0.25);
+
+  box-shadow:
+    0 10px 40px rgba(0,0,0,0.6),
+    inset 0 0 20px rgba(255,255,255,0.05);
+
+  transform: perspective(1000px) rotateX(3deg);
+  transition: 0.4s;
+}
+
+.card:hover {
+  transform: perspective(1000px) rotateX(0deg) scale(1.02);
+  box-shadow:
+    0 20px 60px rgba(0,0,0,0.7),
+    0 0 25px rgba(88, 242, 163, 0.3);
+}
+
+/* TEXT */
+h1 {
+  color: #58f2a3;
+  text-shadow: 0 0 10px rgba(88, 242, 163, 0.4);
+}
+
+h2 {
+  color: #58f2a3;
+  margin-top: 20px;
+  text-shadow: 0 0 8px rgba(88, 242, 163, 0.3);
+}
+
+p {
+  opacity: 0.85;
+  line-height: 1.6;
+}
+
+/* FOOTER CONTACT */
+.contact {
+  margin-top: 20px;
+  padding: 10px;
+  border-radius: 12px;
+  background: rgba(88, 242, 163, 0.1);
+  color: #58f2a3;
+}
+</style>
+</head>
+
+<body>
+
+<div class="glow"></div>
+
+<button class="back" onclick="location.href='index.html'">
+⬅ Zurück zum Start
+</button>
+
+<div class="card">
+
+  <h1>📜 Nutzungsbedingungen</h1>
 
   <h2>1. Nutzung des Bots</h2>
-  <p>Der Skelett-Bot darf nur gemäß den Discord-Nutzungsbedingungen und den Community-Richtlinien verwendet werden.</p>
+  <p>
+    Der Skelett-Bot darf nur gemäß den Discord-Nutzungsbedingungen und Community-Richtlinien verwendet werden.
+  </p>
 
   <h2>2. Verbotene Nutzung</h2>
-  <p>Missbrauch, Spam, das Ausnutzen von Fehlern oder die Verwendung des Bots für illegale Aktivitäten ist untersagt.</p>
+  <p>
+    Missbrauch, Spam, Exploits oder illegale Aktivitäten sind streng untersagt.
+  </p>
 
   <h2>3. Verfügbarkeit</h2>
-  <p>Es besteht kein Anspruch auf eine dauerhafte Verfügbarkeit des Bots. Funktionen können jederzeit geändert oder entfernt werden.</p>
+  <p>
+    Es besteht kein Anspruch auf dauerhafte Verfügbarkeit. Funktionen können jederzeit geändert werden.
+  </p>
 
   <h2>4. Haftung</h2>
-  <p>Der Betreiber übernimmt keine Haftung für Schäden oder Datenverluste, die durch die Nutzung des Bots entstehen.</p>
+  <p>
+    Der Betreiber übernimmt keine Haftung für Schäden oder Datenverluste.
+  </p>
 
   <h2>5. Änderungen</h2>
-  <p>Diese Nutzungsbedingungen können jederzeit aktualisiert werden.</p>
+  <p>
+    Diese Nutzungsbedingungen können jederzeit angepasst werden.
+  </p>
 
-  <p>Kontakt: Discord Name: Skelett675 oder Skelett685</p>
+  <div class="contact">
+    📩 Kontakt: Skelett675 / Skelett685 (Discord)
+  </div>
+
+</div>
+
 </body>
 </html>
