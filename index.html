@@ -2,122 +2,56 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Skelett Bot</title>
 
-<style>
-body {
-  margin:0;
-  font-family: Arial;
-  background: radial-gradient(circle at top, #1a1c20, #0c0d10);
-  color:white;
-  overflow:hidden;
-}
-
-/* GLOW EFFECT */
-.glow {
-  position:absolute;
-  width:500px;
-  height:500px;
-  background: rgba(88,242,163,0.25);
-  filter: blur(130px);
-  border-radius:50%;
-  top:-150px;
-  left:-150px;
-}
-
-/* CENTER */
-.container {
-  height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-}
-
-/* GLASS CARD */
-.card {
-  padding:40px;
-  border-radius:25px;
-
-  background: rgba(255,255,255,0.06);
-  backdrop-filter: blur(20px);
-
-  border: 1px solid rgba(88,242,163,0.25);
-
-  box-shadow: 0 10px 40px rgba(0,0,0,0.7),
-              inset 0 0 20px rgba(255,255,255,0.05);
-
-  transition:0.4s;
-}
-
-.card:hover {
-  transform: scale(1.03);
-  box-shadow: 0 20px 60px rgba(0,0,0,0.8),
-              0 0 25px rgba(88,242,163,0.3);
-}
-
-/* BUTTONS */
-button {
-  margin:10px;
-  padding:12px 20px;
-  border:none;
-  border-radius:12px;
-  background:#58f2a3;
-  font-weight:bold;
-  cursor:pointer;
-  transition:0.3s;
-}
-
-button:hover {
-  box-shadow:0 0 15px rgba(88,242,163,0.6);
-  transform:scale(1.05);
-}
-
-/* SMALL TEXT */
-.small {
-  margin-top:15px;
-  font-size:12px;
-  opacity:0.7;
-}
-</style>
-
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
 <div class="glow"></div>
 
+<!-- SETTINGS BUTTON -->
+<div class="settings">
+  <button onclick="toggleSettings()">⚙</button>
+
+  <div id="settingsMenu" class="settings-menu hidden">
+    
+    <h3>Settings</h3>
+
+    <label>Language</label>
+    <select onchange="setLanguage(this.value)">
+      <option value="de">Deutsch</option>
+      <option value="en">English</option>
+    </select>
+
+    <label>Theme Color</label>
+    <select onchange="setTheme(this.value)">
+      <option value="green">Green</option>
+      <option value="gray">Gray</option>
+      <option value="pastel">Pastel</option>
+    </select>
+
+  </div>
+</div>
+
 <div class="container">
 
   <div class="card">
 
-    <h1>🤖 Skelett Bot</h1>
-    <p>Control Panel</p>
+    <h1 id="title">🤖 Skelett Bot</h1>
+    <p id="subtitle">Control Panel</p>
 
-    <button onclick="goDashboard()">Dashboard</button>
-    <button onclick="goTerms()">Terms</button>
-    <button onclick="goPrivacy()">Privacy</button>
+    <button onclick="goDashboard()" id="btnDash">Dashboard</button>
+    <button onclick="goTerms()" id="btnTerms">Terms</button>
+    <button onclick="goPrivacy()" id="btnPrivacy">Privacy</button>
 
-    <div class="small">Glass UI • Neon Green • No Login</div>
+    <div class="small">Glass UI • v1</div>
 
   </div>
 
 </div>
 
-<script>
-function goDashboard() {
-  window.location.href = "dashboard.html";
-}
-
-function goTerms() {
-  window.location.href = "terms.html";
-}
-
-function goPrivacy() {
-  window.location.href = "privacy.html";
-}
-</script>
-
+<script src="script.js"></script>
 </body>
 </html>
