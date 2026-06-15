@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Dashboard</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial;
+  background: #1e1f22;
+  color: white;
+}
+
+/* Back Button */
+.back {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.08);
+  color: white;
+  cursor: pointer;
+}
+
+/* Top */
+.top {
+  text-align: center;
+  font-size: 24px;
+  padding: 20px;
+  font-weight: bold;
+  color: #5865F2;
+}
+
+/* Container */
+.container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 40px;
+}
+
+/* Glass Cards */
+.card {
+  width: 250px;
+  padding: 20px;
+  border-radius: 20px;
+
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(12px);
+
+  box-shadow: 0 0 20px rgba(0,0,0,0.4);
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: scale(1.03);
+}
+
+/* Colors */
+.green {
+  color: #3ba55c;
+  text-shadow: 0 0 10px #3ba55c;
+}
+
+.red {
+  color: #ed4245;
+  text-shadow: 0 0 10px #ed4245;
+}
+
+button {
+  margin-top: 10px;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 12px;
+  background: #5865F2;
+  color: white;
+  cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<button class="back" onclick="location.href='index.html'">
+⬅ Zurück zum Start
+</button>
+
+<div class="top">🤖 Bot Dashboard</div>
+
+<div class="container">
+
+  <div class="card">
+    <h3>Bot Status</h3>
+    <p id="status">Lade...</p>
+  </div>
+
+  <div class="card">
+    <h3>AutoMod</h3>
+    <p id="automod">Lade...</p>
+    <button onclick="toggleAutoMod()">Toggle</button>
+  </div>
+
+</div>
+
+<script>
+
+async function load(){
+  try {
+    const res = await fetch("http://localhost:3000/api/status");
+    const data = await res.json();
+
+    document.getElementById("status").innerHTML =
+      data.online ? "<span class='green'>🟢 ONLINE</span>" : "<span class='red'>🔴 OFFLINE</span>";
+
+    document.getElementById("automod").innerHTML =
+      data.autoMod ? "<span class='green'>🟢 AN</span>" : "<span class='red'>🔴 AUS</span>";
+
+  } catch (e) {
+    document.getElementById("status").innerHTML = "❌ API Fehler";
+    document.getElementById("automod").innerHTML = "❌ API Fehler";
+  }
+}
+
+async function toggleAutoMod(){
+  await fetch("http://localhost:3000/api/automod", {
+    method: "POST",
+    headers: {"Content-Type":"application/json"},
+    body: JSON.stringify({ value: true })
+  });
+
+  load();
+}
+
+load();
+setInterval(load, 3000);
+
+</script>
+
+</body>
+</html>
