@@ -1,58 +1,151 @@
+/* =========================
+   ROOT (DEFAULT SETTINGS)
+========================= */
+
 :root {
   --accent: #58f2a3;
-  --bg: #0c0d10;
+  --bg1: #1a1c20;
+  --bg2: #0c0d10;
 }
 
-/* THEME COLORS */
+/* =========================
+   THEMES (ACCENT COLORS)
+========================= */
+
 [data-theme="green"] { --accent:#58f2a3; }
 [data-theme="blue"] { --accent:#4da3ff; }
 [data-theme="red"] { --accent:#ff4d4d; }
 [data-theme="purple"] { --accent:#b84dff; }
 [data-theme="orange"] { --accent:#ff9f43; }
 [data-theme="gray"] { --accent:#9aa0a6; }
-[data-theme="dark"] { --accent:#ffffff; }
 
-/* APPLY ACCENT */
-button {
-  background: var(--accent);
+/* Pastell */
+[data-theme="pastel-pink"] { --accent:#ffb3c6; }
+[data-theme="pastel-blue"] { --accent:#a0c4ff; }
+[data-theme="pastel-green"] { --accent:#bde0fe; }
+[data-theme="pastel-purple"] { --accent:#cdb4db; }
+
+/* =========================
+   BASE STYLE
+========================= */
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: radial-gradient(circle at top, var(--bg1), var(--bg2));
+  color: white;
+  overflow-x: hidden;
 }
 
-/* SETTINGS OVERLAY */
-.settings {
-  position: fixed;
-  top: 70px;
-  right: 20px;
+/* =========================
+   GLOW EFFECT
+========================= */
 
-  width: 320px;
-  padding: 20px;
+.glow {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+
+  background: var(--accent);
+  opacity: 0.25;
+
+  filter: blur(130px);
+  border-radius: 50%;
+
+  top: -150px;
+  left: -150px;
+
+  transition: background 0.4s ease;
+}
+
+/* =========================
+   LAYOUT
+========================= */
+
+.container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+/* =========================
+   GLASS CARD
+========================= */
+
+.card {
+  padding: 40px;
+  border-radius: 25px;
 
   background: rgba(255,255,255,0.06);
   backdrop-filter: blur(20px);
 
-  border: 1px solid rgba(255,255,255,0.15);
-  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,0.1);
 
-  box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.7),
+              inset 0 0 20px rgba(255,255,255,0.05);
 
-  display: none;
-  color: white;
-  z-index: 999;
+  transform: perspective(900px) rotateX(3deg);
+  transition: 0.4s;
 }
 
-.settings h3 {
-  margin-top: 0;
+.card:hover {
+  transform: perspective(900px) rotateX(0deg) scale(1.03);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.8),
+              0 0 25px var(--accent);
 }
 
-.setting-group {
-  margin-bottom: 15px;
-}
+/* =========================
+   BUTTONS
+========================= */
 
-select {
-  width: 100%;
-  padding: 10px;
-  border-radius: 10px;
+button {
+  margin: 10px;
+  padding: 12px 20px;
+
   border: none;
-  outline: none;
-  background: #1a1c20;
-  color: white;
+  border-radius: 12px;
+
+  background: var(--accent);
+  color: black;
+
+  font-weight: bold;
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+button:hover {
+  box-shadow: 0 0 15px var(--accent);
+  transform: scale(1.05);
+}
+
+/* =========================
+   SMALL TEXT
+========================= */
+
+.small {
+  margin-top: 15px;
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+/* =========================
+   SETTINGS MENU (optional later)
+========================= */
+
+.settings-panel {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(15px);
+
+  border-radius: 15px;
+  padding: 15px;
+
+  border: 1px solid rgba(255,255,255,0.1);
 }
