@@ -1,48 +1,59 @@
 <!DOCTYPE html>
-<html>
+<html lang="de">
 <head>
 <meta charset="UTF-8">
-<title>Home</title>
+<title>Skelett Bot</title>
 <link rel="stylesheet" href="style.css">
+<script defer src="script.js"></script>
 </head>
 
 <body>
 
 <div class="glow"></div>
 
-<button class="gear-btn" onclick="toggleSettings()">⚙</button>
+<!-- SETTINGS BUTTON -->
+<button class="settings-btn" onclick="toggleSettings()">⚙</button>
 
-<div id="settings" class="settings hidden">
+<!-- SETTINGS PANEL -->
+<div class="settings-panel" id="settings">
+
   <h3>Settings</h3>
 
+  <label>🌍 Sprache</label>
   <select onchange="setLang(this.value)">
-    <option value="de">Deutsch</option>
-    <option value="en">English</option>
+    <option value="de">🇩🇪 Deutsch</option>
+    <option value="en">🇺🇸 English</option>
   </select>
 
+  <label>🎨 Farbe</label>
   <select onchange="setTheme(this.value)">
-    <option value="green">Green</option>
-    <option value="blue">Blue</option>
-    <option value="red">Red</option>
-    <option value="purple">Purple</option>
+    <option value="green">Grün</option>
+    <option value="blue">Blau</option>
+    <option value="red">Rot</option>
+    <option value="purple">Lila</option>
     <option value="orange">Orange</option>
-    <option value="gray">Gray</option>
-    <option value="white">White</option>
+    <option value="gray">Grau</option>
+    <option value="dark">Dark</option>
+    <option value="pastel-pink">Pastell Pink</option>
+    <option value="pastel-blue">Pastell Blau</option>
   </select>
+
 </div>
 
-<div class="center">
+<!-- CENTER -->
+<div class="container">
+
   <div class="card">
 
-    <h1 data-de="Skelett Bot" data-en="Skelett Bot">Skelett Bot</h1>
-    <p data-de="Control Panel" data-en="Control Panel">Control Panel</p>
+    <h1 id="title">🤖 Skelett Bot</h1>
+    <p id="subtitle">Control Panel</p>
 
-    <button onclick="location.href='terms.html'" data-de="AGB" data-en="Terms">Terms</button>
-    <button onclick="location.href='privacy.html'" data-de="Datenschutz" data-en="Privacy">Privacy</button>
+    <button onclick="location.href='terms.html'" id="btnTerms">Terms</button>
+    <button onclick="location.href='privacy.html'" id="btnPrivacy">Privacy</button>
 
   </div>
+
 </div>
 
-<script src="script.js"></script>
 </body>
 </html>
