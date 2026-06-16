@@ -3,76 +3,27 @@
 <head>
 <meta charset="UTF-8">
 <title>Privacy</title>
-
-<style>
-body {
-  margin: 0;
-  font-family: Arial;
-  background: radial-gradient(circle at top, #1e1f22, #111214);
-  color: white;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* BACK */
-.back {
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  padding: 10px 15px;
-  border-radius: 14px;
-  border: none;
-  background: rgba(255,255,255,0.08);
-  color: white;
-  cursor: pointer;
-}
-
-/* CARD */
-.card {
-  width: 600px;
-  padding: 35px;
-  border-radius: 25px;
-
-  background: rgba(255,255,255,0.06);
-  backdrop-filter: blur(18px);
-
-  border: 1px solid rgba(88, 242, 163, 0.25);
-
-  box-shadow:
-    0 10px 40px rgba(0,0,0,0.6),
-    inset 0 0 20px rgba(255,255,255,0.05);
-
-  transform: perspective(1000px) rotateX(3deg);
-  transition: 0.4s;
-}
-
-.card:hover {
-  transform: perspective(1000px) rotateX(0deg) scale(1.02);
-}
-
-h1 {
-  color: #58f2a3;
-}
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<button class="back" onclick="location.href='index.html'">
-⬅ Zurück
-</button>
+<div class="glow"></div>
 
-<div class="card">
-  <h1>🔒 Privacy</h1>
+<div style="padding:20px;">
+  <button onclick="location.href='index.html'">
+    ⬅ <span data-de="Zurück" data-en="Back">Back</span>
+  </button>
+</div>
 
-  <p>
-    - Keine persönlichen Daten<br>
-    - Nur Bot Status API<br>
-    - Nur Owner Zugriff (später Login)
+<div class="card" style="margin:50px;">
+  <h1 data-de="Datenschutz" data-en="Privacy">Privacy</h1>
+
+  <p data-de="Keine Daten werden gespeichert" data-en="No data is stored">
+    Keine Daten werden gespeichert
   </p>
 </div>
 
+<script src="script.js"></script>
 </body>
 </html>
