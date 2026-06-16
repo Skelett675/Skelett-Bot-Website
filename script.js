@@ -20,6 +20,7 @@ const translations = {
       <p>Nur API Nutzung.</p>
     `
   },
+
   en: {
     title: "🤖 Skelett Bot",
     subtitle: "Control Panel",
@@ -85,10 +86,10 @@ function applyLang(l) {
   }
 }
 
-/* INIT */
+/* INIT → DEFAULT = ENGLISH */
 window.onload = () => {
   const theme = localStorage.getItem("theme") || "green";
-  const lang = localStorage.getItem("lang") || "de";
+  const lang = localStorage.getItem("lang") || "en"; // 👈 FIX: default EN
 
   document.documentElement.setAttribute("data-theme", theme);
   applyLang(lang);
