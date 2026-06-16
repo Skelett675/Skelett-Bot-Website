@@ -12,12 +12,6 @@
 <button class="settings-btn" onclick="toggleSettings()">⚙</button>
 
 <div class="settings" id="settings">
-  <label>Language</label>
-  <select onchange="setLang(this.value)">
-    <option value="de">Deutsch</option>
-    <option value="en" selected>English</option>
-  </select>
-
   <label>Color</label>
   <select onchange="setTheme(this.value)">
     <option value="green">Green</option>
@@ -34,8 +28,8 @@
     <h1 id="title">🤖 Skelett Bot</h1>
     <p id="subtitle">Control Panel</p>
 
-    <button data-i18n="terms" onclick="location.href='terms.html'">Terms</button>
-    <button data-i18n="privacy" onclick="location.href='privacy.html'">Privacy</button>
+    <button onclick="location.href='terms.html'">Terms</button>
+    <button onclick="location.href='privacy.html'">Privacy</button>
   </div>
 </div>
 
