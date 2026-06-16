@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <title>Skelett Bot</title>
@@ -12,20 +12,20 @@
 <button class="settings-btn" onclick="toggleSettings()">⚙</button>
 
 <div class="settings" id="settings">
-  <label data-i18n="language">Sprache</label>
+  <label>Language</label>
   <select onchange="setLang(this.value)">
     <option value="de">Deutsch</option>
-    <option value="en">English</option>
+    <option value="en" selected>English</option>
   </select>
 
-  <label data-i18n="color">Farbe</label>
+  <label>Color</label>
   <select onchange="setTheme(this.value)">
-    <option value="green">Grün</option>
-    <option value="blue">Blau</option>
-    <option value="red">Rot</option>
-    <option value="purple">Lila</option>
+    <option value="green">Green</option>
+    <option value="blue">Blue</option>
+    <option value="red">Red</option>
+    <option value="purple">Purple</option>
     <option value="orange">Orange</option>
-    <option value="gray">Grau</option>
+    <option value="gray">Gray</option>
   </select>
 </div>
 
