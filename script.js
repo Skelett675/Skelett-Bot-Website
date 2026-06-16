@@ -9,17 +9,17 @@ const translations = {
     language: "Sprache",
     color: "Farbe",
     termsText: `
-      1. Nutzung nur erlaubt für Bot<br>
-      2. Kein Spam<br>
-      3. Keine Haftung
+      <h2>Terms</h2>
+      <p>Nur Bot Nutzung erlaubt.</p>
+      <p>Kein Spam / Abuse.</p>
+      <p>Keine Haftung.</p>
     `,
     privacyText: `
-      - Keine Daten gespeichert<br>
-      - Nur API Nutzung<br>
-      - Kein Tracking
+      <h2>Privacy</h2>
+      <p>Keine Daten gespeichert.</p>
+      <p>Nur API Nutzung.</p>
     `
   },
-
   en: {
     title: "🤖 Skelett Bot",
     subtitle: "Control Panel",
@@ -30,70 +30,66 @@ const translations = {
     language: "Language",
     color: "Color",
     termsText: `
-      1. Only allowed for bot usage<br>
-      2. No spam<br>
-      3. No liability
+      <h2>Terms</h2>
+      <p>Only bot usage allowed.</p>
+      <p>No spam / abuse.</p>
+      <p>No liability.</p>
     `,
     privacyText: `
-      - No data stored<br>
-      - API only usage<br>
-      - No tracking
+      <h2>Privacy</h2>
+      <p>No data stored.</p>
+      <p>API only usage.</p>
     `
   }
 };
 
 /* SETTINGS TOGGLE */
 function toggleSettings() {
-  const panel = document.getElementById("settings");
-  panel.style.display = panel.style.display === "block" ? "none" : "block";
+  const s = document.getElementById("settings");
+  s.style.display = s.style.display === "block" ? "none" : "block";
 }
 
 /* THEME */
-function setTheme(theme) {
-  document.documentElement.setAttribute("data-theme", theme);
-  localStorage.setItem("theme", theme);
+function setTheme(t) {
+  document.documentElement.setAttribute("data-theme", t);
+  localStorage.setItem("theme", t);
 }
 
 /* LANGUAGE */
-function setLang(lang) {
-  localStorage.setItem("lang", lang);
-  applyLang(lang);
+function setLang(l) {
+  localStorage.setItem("lang", l);
+  applyLang(l);
 }
 
-function applyLang(lang) {
-  const t = translations[lang];
+function applyLang(l) {
+  const t = translations[l];
 
-  // INDEX
   if (document.getElementById("title")) {
     document.getElementById("title").innerHTML = t.title;
     document.getElementById("subtitle").innerHTML = t.subtitle;
   }
 
-  // BUTTONS GLOBAL
   document.querySelectorAll("[data-i18n='terms']").forEach(e => e.innerHTML = t.terms);
   document.querySelectorAll("[data-i18n='privacy']").forEach(e => e.innerHTML = t.privacy);
   document.querySelectorAll("[data-i18n='back']").forEach(e => e.innerHTML = t.back);
-
-  // SETTINGS LABELS
   document.querySelectorAll("[data-i18n='settings']").forEach(e => e.innerHTML = t.settings);
   document.querySelectorAll("[data-i18n='language']").forEach(e => e.innerHTML = t.language);
   document.querySelectorAll("[data-i18n='color']").forEach(e => e.innerHTML = t.color);
 
-  // TERMS PAGE
-  const terms = document.getElementById("termsText");
-  if (terms) terms.innerHTML = t.termsText;
+  if (document.getElementById("termsText")) {
+    document.getElementById("termsText").innerHTML = t.termsText;
+  }
 
-  // PRIVACY PAGE
-  const privacy = document.getElementById("privacyText");
-  if (privacy) privacy.innerHTML = t.privacyText;
+  if (document.getElementById("privacyText")) {
+    document.getElementById("privacyText").innerHTML = t.privacyText;
+  }
 }
 
-/* LOAD */
+/* INIT */
 window.onload = () => {
-  const theme = localStorage.getItem("theme");
+  const theme = localStorage.getItem("theme") || "green";
   const lang = localStorage.getItem("lang") || "de";
 
-  if (theme) document.documentElement.setAttribute("data-theme", theme);
-
+  document.documentElement.setAttribute("data-theme", theme);
   applyLang(lang);
 };
