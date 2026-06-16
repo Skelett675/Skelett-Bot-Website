@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="de">
+<html>
 <head>
 <meta charset="UTF-8">
 <title>Home</title>
@@ -10,19 +10,9 @@
 
 <div class="glow"></div>
 
-<div class="card" style="margin:80px auto; width:300px; text-align:center;">
-  <h1 data-de="Skelett Bot" data-en="Skelett Bot">Skelett Bot</h1>
-  <p data-de="Control Panel" data-en="Control Panel">Control Panel</p>
+<button class="gear-btn" onclick="toggleSettings()">⚙</button>
 
-
-  <button onclick="location.href='terms.html'" 
-    data-de="AGB" data-en="Terms">Terms</button>
-
-  <button onclick="location.href='privacy.html'" 
-    data-de="Datenschutz" data-en="Privacy">Privacy</button>
-</div>
-
-<div id="settings" class="card" style="position:fixed;top:20px;right:20px;width:250px;">
+<div id="settings" class="settings hidden">
   <h3>Settings</h3>
 
   <select onchange="setLang(this.value)">
@@ -38,11 +28,19 @@
     <option value="orange">Orange</option>
     <option value="gray">Gray</option>
     <option value="white">White</option>
-    <option value="pastel-pink">Pastel Pink</option>
-    <option value="pastel-blue">Pastel Blue</option>
-    <option value="pastel-green">Pastel Green</option>
-    <option value="pastel-purple">Pastel Purple</option>
   </select>
+</div>
+
+<div class="center">
+  <div class="card">
+
+    <h1 data-de="Skelett Bot" data-en="Skelett Bot">Skelett Bot</h1>
+    <p data-de="Control Panel" data-en="Control Panel">Control Panel</p>
+
+    <button onclick="location.href='terms.html'" data-de="AGB" data-en="Terms">Terms</button>
+    <button onclick="location.href='privacy.html'" data-de="Datenschutz" data-en="Privacy">Privacy</button>
+
+  </div>
 </div>
 
 <script src="script.js"></script>
