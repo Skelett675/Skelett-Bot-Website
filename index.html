@@ -2,251 +2,51 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<title>Skelett Bot</title>
-
-<style>
-:root {
-  --accent: #58f2a3;
-  --bg: #0c0d10;
-}
-
-body {
-  margin: 0;
-  font-family: Arial;
-  background: radial-gradient(circle at top, #1a1c20, #0c0d10);
-  color: white;
-  overflow: hidden;
-}
-
-/* COLORS */
-[data-theme="green"] { --accent:#58f2a3; }
-[data-theme="blue"] { --accent:#4da3ff; }
-[data-theme="red"] { --accent:#ff4d4d; }
-[data-theme="purple"] { --accent:#b84dff; }
-[data-theme="orange"] { --accent:#ff9f43; }
-[data-theme="gray"] { --accent:#9aa0a6; }
-[data-theme="dark"] { --accent:#ffffff; }
-
-/* GLOW */
-.glow {
-  position: absolute;
-  width: 500px;
-  height: 500px;
-  background: rgba(88,242,163,0.25);
-  filter: blur(130px);
-  border-radius: 50%;
-  top: -150px;
-  left: -150px;
-}
-
-/* CENTER */
-.container {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  text-align: center;
-}
-
-/* CARD */
-.card {
-  padding: 40px;
-  border-radius: 25px;
-
-  background: rgba(255,255,255,0.06);
-  backdrop-filter: blur(20px);
-
-  border: 1px solid rgba(255,255,255,0.15);
-
-  box-shadow: 0 10px 40px rgba(0,0,0,0.7),
-              inset 0 0 20px rgba(255,255,255,0.05);
-
-  transform: perspective(900px) rotateX(3deg);
-  transition: 0.4s;
-}
-
-.card:hover {
-  transform: perspective(900px) rotateX(0deg) scale(1.03);
-  box-shadow: 0 20px 60px rgba(0,0,0,0.8),
-              0 0 25px var(--accent);
-}
-
-/* BUTTONS */
-button {
-  margin: 10px;
-  padding: 12px 20px;
-  border: none;
-  border-radius: 12px;
-  background: var(--accent);
-  font-weight: bold;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-button:hover {
-  box-shadow: 0 0 15px var(--accent);
-  transform: scale(1.05);
-}
-
-/* SETTINGS */
-.settings {
-  position: fixed;
-  top: 70px;
-  right: 20px;
-
-  width: 320px;
-  padding: 20px;
-
-  background: rgba(255,255,255,0.06);
-  backdrop-filter: blur(20px);
-
-  border: 1px solid rgba(255,255,255,0.15);
-  border-radius: 18px;
-
-  box-shadow: 0 20px 60px rgba(0,0,0,0.6);
-
-  display: none;
-  z-index: 999;
-}
-
-.settings h3 {
-  margin-top: 0;
-}
-
-.setting-group {
-  margin-bottom: 15px;
-}
-
-select {
-  width: 100%;
-  padding: 10px;
-  border-radius: 10px;
-  border: none;
-  outline: none;
-  background: #1a1c20;
-  color: white;
-}
-
-/* SMALL TEXT */
-.small {
-  margin-top: 15px;
-  font-size: 12px;
-  opacity: 0.7;
-}
-
-/* SETTINGS BUTTON */
-.settings-btn {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  z-index: 1000;
-}
-</style>
-
+<title>Home</title>
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
 <div class="glow"></div>
 
-<!-- SETTINGS BUTTON -->
-<button class="settings-btn" onclick="toggleSettings()">⚙ Settings</button>
+<div class="card" style="margin:80px auto; width:300px; text-align:center;">
+  <h1 data-de="Skelett Bot" data-en="Skelett Bot">Skelett Bot</h1>
+  <p data-de="Control Panel" data-en="Control Panel">Control Panel</p>
 
-<!-- SETTINGS MENU -->
-<div class="settings" id="settings">
+  <button onclick="location.href='dashboard.html'" 
+    data-de="Dashboard" data-en="Dashboard">Dashboard</button>
 
+  <button onclick="location.href='terms.html'" 
+    data-de="AGB" data-en="Terms">Terms</button>
+
+  <button onclick="location.href='privacy.html'" 
+    data-de="Datenschutz" data-en="Privacy">Privacy</button>
+</div>
+
+<div id="settings" class="card" style="position:fixed;top:20px;right:20px;width:250px;">
   <h3>Settings</h3>
 
-  <div class="setting-group">
-    <label>Sprache</label>
-    <select onchange="setLang(this.value)">
-      <option value="de">Deutsch</option>
-      <option value="en">English</option>
-    </select>
-  </div>
+  <select onchange="setLang(this.value)">
+    <option value="de">Deutsch</option>
+    <option value="en">English</option>
+  </select>
 
-  <div class="setting-group">
-    <label>Farbe</label>
-    <select onchange="setTheme(this.value)">
-      <option value="green">Grün</option>
-      <option value="blue">Blau</option>
-      <option value="red">Rot</option>
-      <option value="purple">Lila</option>
-      <option value="orange">Orange</option>
-      <option value="gray">Grau</option>
-      <option value="dark">Weiß</option>
-    </select>
-  </div>
-
+  <select onchange="setTheme(this.value)">
+    <option value="green">Green</option>
+    <option value="blue">Blue</option>
+    <option value="red">Red</option>
+    <option value="purple">Purple</option>
+    <option value="orange">Orange</option>
+    <option value="gray">Gray</option>
+    <option value="white">White</option>
+    <option value="pastel-pink">Pastel Pink</option>
+    <option value="pastel-blue">Pastel Blue</option>
+    <option value="pastel-green">Pastel Green</option>
+    <option value="pastel-purple">Pastel Purple</option>
+  </select>
 </div>
 
-<!-- MAIN -->
-<div class="container">
-
-  <div class="card">
-
-    <h1 id="title">🤖 Skelett Bot</h1>
-    <p id="subtitle">Control Panel</p>
-
-    <button onclick="goDashboard()">Dashboard</button>
-    <button onclick="goTerms()">Terms</button>
-    <button onclick="goPrivacy()">Privacy</button>
-
-    <div class="small">Glass UI • Settings • v1</div>
-
-  </div>
-
-</div>
-
-<script>
-function toggleSettings() {
-  const s = document.getElementById("settings");
-  s.style.display = (s.style.display === "block") ? "none" : "block";
-}
-
-/* NAV */
-function goDashboard() {
-  window.location.href = "dashboard.html";
-}
-function goTerms() {
-  window.location.href = "terms.html";
-}
-function goPrivacy() {
-  window.location.href = "privacy.html";
-}
-
-/* THEME */
-function setTheme(theme) {
-  document.documentElement.setAttribute("data-theme", theme);
-  localStorage.setItem("theme", theme);
-}
-
-/* LANGUAGE */
-function setLang(lang) {
-  localStorage.setItem("lang", lang);
-
-  const title = document.getElementById("title");
-  const subtitle = document.getElementById("subtitle");
-
-  if (lang === "de") {
-    title.innerText = "🤖 Skelett Bot";
-    subtitle.innerText = "Control Panel";
-  } else {
-    title.innerText = "🤖 Skelett Bot";
-    subtitle.innerText = "Dashboard Panel";
-  }
-}
-
-/* LOAD SAVED SETTINGS */
-window.onload = () => {
-  const theme = localStorage.getItem("theme");
-  const lang = localStorage.getItem("lang");
-
-  if (theme) document.documentElement.setAttribute("data-theme", theme);
-  if (lang) setLang(lang);
-};
-</script>
-
+<script src="script.js"></script>
 </body>
 </html>
