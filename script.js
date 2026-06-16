@@ -1,37 +1,23 @@
-<script>
-function toggleSettings() {
-  const s = document.getElementById("settings");
-  s.style.display = (s.style.display === "block") ? "none" : "block";
+function setTheme(t) {
+  localStorage.setItem("theme", t);
+  document.documentElement.setAttribute("data-theme", t);
 }
 
-/* THEME */
-function setTheme(theme) {
-  document.documentElement.setAttribute("data-theme", theme);
-  localStorage.setItem("theme", theme);
+function setLang(l) {
+  localStorage.setItem("lang", l);
+  applyLang();
 }
 
-/* LANGUAGE (einfaches System erstmal) */
-function setLang(lang) {
-  localStorage.setItem("lang", lang);
+function applyLang() {
+  const lang = localStorage.getItem("lang") || "de";
 
-  if (lang === "de") {
-    document.querySelector("h1").innerText = "🤖 Skelett Bot";
-  } else {
-    document.querySelector("h1").innerText = "🤖 Skelett Bot";
-  }
+  document.querySelectorAll("[data-de]").forEach(el => {
+    el.innerText = lang === "de" ? el.dataset.de : el.dataset.en;
+  });
 }
 
-/* LOAD SAVED */
 window.onload = () => {
-  const theme = localStorage.getItem("theme");
-  const lang = localStorage.getItem("lang");
-
-  if (theme) {
-    document.documentElement.setAttribute("data-theme", theme);
-  }
-
-  if (lang) {
-    setLang(lang);
-  }
+  const theme = localStorage.getItem("theme") || "green";
+  document.documentElement.setAttribute("data-theme", theme);
+  applyLang();
 };
-</script>
