@@ -1,7 +1,7 @@
 :root {
-  --accent:#58f2a3;
-  --bg1:#1a1c20;
-  --bg2:#0c0d10;
+  --accent: #58f2a3;
+  --bg1: #1a1c20;
+  --bg2: #0c0d10;
 }
 
 /* THEMES */
@@ -11,115 +11,96 @@
 [data-theme="purple"] { --accent:#b84dff; }
 [data-theme="orange"] { --accent:#ff9f43; }
 [data-theme="gray"] { --accent:#9aa0a6; }
+[data-theme="dark"] { --accent:#ffffff; }
 
+[data-theme="pastel-pink"] { --accent:#ffb3c6; }
+[data-theme="pastel-blue"] { --accent:#a0c4ff; }
+
+/* BODY */
 body {
   margin:0;
-  font-family:Arial;
+  font-family: Arial;
   background: radial-gradient(circle at top, var(--bg1), var(--bg2));
   color:white;
+  overflow:hidden;
 }
 
-/* GLOW */
+/* GLOW (FOLGT FARBE) */
 .glow {
   position:absolute;
   width:500px;
   height:500px;
-  background:var(--accent);
+  background: var(--accent);
+  filter: blur(130px);
   opacity:0.25;
-  filter:blur(130px);
   border-radius:50%;
   top:-150px;
   left:-150px;
+  transition:0.3s;
+}
+
+/* CENTER */
+.container {
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
 }
 
 /* CARD */
 .card {
-  background:rgba(255,255,255,0.06);
-  backdrop-filter:blur(20px);
-  border-radius:20px;
-  border:1px solid rgba(255,255,255,0.1);
-  padding:25px;
-}
-
-/* BUTTON */
-button {
-  background:var(--accent);
-  border:none;
-  padding:10px 14px;
-  border-radius:10px;
-  cursor:pointer;
-  font-weight:bold;
-  transition:0.2s;
-}
-button:hover {
-  transform:scale(1.05);
-}
-
-/* CENTER */
-.center {
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  height:100vh;
   text-align:center;
-  flex-direction:column;
+  padding:40px;
+  border-radius:25px;
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(20px);
+  border:1px solid rgba(255,255,255,0.1);
 }
 
-/* =========================
-   SETTINGS MENU (SLIDE)
-========================= */
-
-.gear {
-  position:fixed;
-  top:20px;
-  right:20px;
-  font-size:20px;
-  background:var(--accent);
+/* BUTTONS */
+button {
+  margin:10px;
+  padding:12px 18px;
   border:none;
-  width:45px;
-  height:45px;
   border-radius:12px;
+  background:var(--accent);
+  font-weight:bold;
   cursor:pointer;
-  z-index:1000;
 }
 
-.settings {
+/* SETTINGS BUTTON */
+.settings-btn {
   position:fixed;
-  top:0;
-  right:-280px;
-  width:260px;
-  height:100vh;
-
-  background:rgba(20,20,20,0.7);
-  backdrop-filter:blur(25px);
-  border-left:1px solid rgba(255,255,255,0.1);
-
-  padding:20px;
-  transition:0.35s ease;
-  z-index:999;
+  top:15px;
+  right:15px;
+  font-size:22px;
+  background:transparent;
+  color:white;
 }
 
-.settings.open {
-  right:0;
+/* SETTINGS PANEL */
+.settings-panel {
+  position:fixed;
+  top:60px;
+  right:-260px;
+  width:220px;
+  padding:15px;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(15px);
+  border-radius:15px;
+  border:1px solid rgba(255,255,255,0.1);
+  transition:0.3s;
 }
 
-/* SETTINGS ITEMS */
-.setting {
-  margin-bottom:15px;
+.settings-panel.open {
+  right:15px;
 }
 
 select {
   width:100%;
+  margin-bottom:10px;
   padding:8px;
   border-radius:8px;
-  border:none;
   background:#111;
   color:white;
-}
-
-/* FLAG */
-.flag {
-  width:22px;
-  margin-right:6px;
-  vertical-align:middle;
 }
