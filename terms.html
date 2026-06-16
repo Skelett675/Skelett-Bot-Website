@@ -3,102 +3,27 @@
 <head>
 <meta charset="UTF-8">
 <title>Terms</title>
-
-<style>
-body {
-  margin: 0;
-  font-family: Arial;
-  background: radial-gradient(circle at top, #1e1f22, #111214);
-  color: white;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* BACK BUTTON */
-.back {
-  position: fixed;
-  top: 20px;
-  left: 20px;
-
-  padding: 10px 15px;
-  border-radius: 14px;
-  border: none;
-
-  background: rgba(255,255,255,0.08);
-  backdrop-filter: blur(10px);
-
-  color: white;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.back:hover {
-  transform: scale(1.05);
-  background: rgba(88, 242, 163, 0.2);
-  box-shadow: 0 0 15px rgba(88, 242, 163, 0.5);
-}
-
-/* GLASS CARD */
-.card {
-  width: 750px;
-  padding: 35px;
-  border-radius: 25px;
-
-  background: rgba(255,255,255,0.06);
-  backdrop-filter: blur(18px);
-
-  border: 1px solid rgba(88, 242, 163, 0.25);
-
-  box-shadow:
-    0 10px 40px rgba(0,0,0,0.6),
-    inset 0 0 20px rgba(255,255,255,0.05);
-
-  transform: perspective(1000px) rotateX(2deg);
-  transition: 0.25s;
-}
-
-.card:hover {
-  transform: perspective(1000px) rotateX(0deg) scale(1.01);
-}
-
-/* TEXT */
-h1, h2 {
-  color: #58f2a3;
-  text-shadow: 0 0 10px rgba(88, 242, 163, 0.3);
-}
-
-p {
-  opacity: 0.85;
-  line-height: 1.6;
-}
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<button class="back" onclick="location.href='index.html'">
-⬅ Start
-</button>
+<div class="glow"></div>
 
-<div class="card">
-
-  <h1>📜 Terms</h1>
-
-  <h2>1. Nutzung</h2>
-  <p>Nur für Discord Bot erlaubt.</p>
-
-  <h2>2. Verboten</h2>
-  <p>Spam, Abuse oder Exploits sind verboten.</p>
-
-  <h2>3. Haftung</h2>
-  <p>Keine Haftung für Schäden oder Datenverlust.</p>
-
-  <h2>4. Änderungen</h2>
-  <p>Diese Bedingungen können jederzeit geändert werden.</p>
-
+<div style="padding:20px;">
+  <button onclick="location.href='index.html'">
+    ⬅ <span data-de="Zurück" data-en="Back">Back</span>
+  </button>
 </div>
 
+<div class="card" style="margin:50px;">
+  <h1 data-de="AGB" data-en="Terms">Terms</h1>
+
+  <p data-de="Nur Bot Nutzung erlaubt" data-en="Bot usage only allowed">
+    Nur Bot Nutzung erlaubt
+  </p>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
