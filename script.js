@@ -16,6 +16,10 @@ function applyLang() {
   });
 }
 
+function toggleSettings() {
+  document.getElementById("settings").classList.toggle("hidden");
+}
+
 window.onload = () => {
   const theme = localStorage.getItem("theme") || "green";
   document.documentElement.setAttribute("data-theme", theme);
