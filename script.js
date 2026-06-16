@@ -1,30 +1,37 @@
 function toggleSettings() {
-  document.getElementById("settings").classList.toggle("open");
+  const panel = document.getElementById("settings");
+  panel.style.display = (panel.style.display === "block") ? "none" : "block";
 }
 
-function setTheme(t){
-  localStorage.setItem("theme",t);
-  document.documentElement.setAttribute("data-theme",t);
+/* THEME */
+function setTheme(theme) {
+  document.documentElement.setAttribute("data-theme", theme);
+  localStorage.setItem("theme", theme);
 }
 
-function setLang(l){
-  localStorage.setItem("lang",l);
+/* LANGUAGE */
+function setLang(lang) {
+  localStorage.setItem("lang", lang);
 
-  const title = document.getElementById("title");
-  const subtitle = document.getElementById("subtitle");
+  const t = document.getElementById("title");
+  const s = document.getElementById("subtitle");
 
-  if(!title) return;
+  if (!t) return;
 
-  if(l==="de"){
-    title.innerText="🤖 Skelett Bot";
-    subtitle.innerText="Control Panel";
+  if (lang === "de") {
+    t.innerHTML = "🤖 Skelett Bot";
+    s.innerHTML = "Control Panel";
   } else {
-    title.innerText="🤖 Skelett Bot";
-    subtitle.innerText="Dashboard Panel";
+    t.innerHTML = "🤖 Skelett Bot";
+    s.innerHTML = "Dashboard Panel";
   }
 }
 
-window.onload=()=>{
-  const t = localStorage.getItem("theme")||"green";
-  document.documentElement.setAttribute("data-theme",t);
+/* LOAD SETTINGS */
+window.onload = () => {
+  const theme = localStorage.getItem("theme");
+  const lang = localStorage.getItem("lang");
+
+  if (theme) document.documentElement.setAttribute("data-theme", theme);
+  if (lang) setLang(lang);
 };
