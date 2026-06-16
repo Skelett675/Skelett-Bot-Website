@@ -11,7 +11,7 @@
 [data-theme="purple"] { --accent:#b84dff; }
 [data-theme="orange"] { --accent:#ff9f43; }
 [data-theme="gray"] { --accent:#9aa0a6; }
-[data-theme="dark"] { --accent:#ffffff; }
+[data-theme="white"] { --accent:#ffffff; }
 
 body {
   margin:0;
